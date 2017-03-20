@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name='menu' ></ion-icon>
+    </button>
+    <ion-title>
+      Overlay
+    </ion-title>
+
+  <ion-buttons right>
+    <button ion-button menuToggle="right">
+      <ion-icon name='menu' ></ion-icon>
+    </button>
+  </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding> 
+
+  <ion-fab right bottom>
+    <button ion-fab mini><ion-icon name="add"></ion-icon></button>
+    <ion-fab-list side="top">
+      <button ion-fab><ion-icon name="logo-facebook"></ion-icon></button>
+      <button ion-fab><ion-icon name="logo-twitter"></ion-icon></button>
+      <button ion-fab><ion-icon name="logo-vimeo"></ion-icon></button>
+      <button ion-fab><ion-icon name="logo-googleplus"></ion-icon></button>
+    </ion-fab-list>
+  </ion-fab>
+
+  <button ion-button (click)='presentActionSheet()' >actionSheetCtrl</button>
+
+  <button ion-button block (click)='showAlert()' > Alert </button> 
+
+  <ion-row>
+    <ion-col>
+      <button ion-button block (click)='buscaLoginUser2("55024230","Cesar")'>Cadastrar</button>
+    </ion-col>
+  </ion-row>
+
+  <ion-card *ngFor='let person of people'>
+
+    <ion-item>
+      <ion-avatar item-left>        
+        <img src="{{person.picture.thumbnail}}" (click)='mostrarPessoa(person)'/>
+      </ion-avatar>
+      <h2>{{person.name.first}}</h2>
+      <p>{{person.name.last}}</p>
+    </ion-item>
+
+    <img src="{{person.picture.large}}"/>
+
+    <ion-card-content>
+      <p>{{person.name.first}} {{person.name.last}}</p>
+    </ion-card-content>
+
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-left clear small>
+          <ion-icon name="thumbs-up"></ion-icon>
+          <div>{{person.email}}</div>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-left clear small>
+          <ion-icon name="text"></ion-icon>
+          <div>{{person.gender}}</div>
+        </button>
+      </ion-col>
+      <ion-col center text-center>
+        <ion-note>
+          {{person.cell}}
+        </ion-note>
+      </ion-col>
+    </ion-row>
+
+  </ion-card>
+
+
+  
+
+
+</ion-content>

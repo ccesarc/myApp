@@ -1,0 +1,21 @@
+<ion-menu [content]='myContent' id='menuTopo'>
+        <ion-header>
+            <ion-navbar>
+            <ion-buttons start>
+                <button ion-button icon-only>
+                <ion-icon name="contact"></ion-icon>
+                </button>
+            </ion-buttons>
+            <ion-title>My First List</ion-title>
+            </ion-navbar>
+        </ion-header>
+        <ion-content>
+            <ion-list>
+                <button ion-item *ngFor='let p of pages' (click)='openPage(p)' >
+                    {{ p.title }}
+                </button>                
+            </ion-list>
+        </ion-content>
+</ion-menu>
+
+<ion-nav #myContent [root]="rootPage"></ion-nav>

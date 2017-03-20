@@ -1,0 +1,37 @@
+
+<ion-content >
+  <div padding [@flyInBottomFast]="cloudState" id="cloud-layer">
+ 
+    <ion-row>
+      <ion-col>
+        <img [@flyInBottomSlow]="logoState" src="assets/img/joshuamorony.png" />
+      </ion-col>
+    </ion-row>
+ 
+    <ion-row>
+      <ion-col>
+        <ion-list inset [@bounceInBottom]="formState">
+ 
+          <ion-item>
+            <ion-label>Username</ion-label>
+            <ion-input type="text" [(ngModel)]='email' ></ion-input>
+          </ion-item>
+ 
+          <ion-item>
+            <ion-label>Password</ion-label>
+            <ion-input type="password" [(ngModel)]='senha' ></ion-input> 
+          </ion-item>
+ 
+        </ion-list>
+      </ion-col>
+    </ion-row>
+ 
+    <ion-row>
+      <ion-col>
+        <button ion-button class="login-button" [@fadeIn]="loginState" (click)='buscaLoginUser()'>Login {{usuarios_id}} </button>
+      </ion-col>
+    </ion-row>   
+ 
+  </div>
+  
+</ion-content>

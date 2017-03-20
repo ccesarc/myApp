@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Descrição
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary" showWhen="ios">Cancelar</span>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+      <ion-item>
+        <ion-avatar item-left>
+          <img src="{{character.picture.thumbnail}}">
+        </ion-avatar>
+        <h2>{{character.name.first}} </h2>
+        <p>{{character.name.last}} </p>
+        <h2>{{character.dob}} </h2>
+        <p>{{character.email}} </p>
+        <h2>{{character.gender}} </h2>
+        <p>{{character.phone}} </p>
+        <h2>{{character.registered}} </h2>
+        <p>{{character.nat}} </p>
+        <p>{{character.location.city}} </p>
+        <p>{{character.location.postcode}} </p>
+        <p>{{character.location.state}} </p>
+        <p>{{character.location.street}} </p>
+        
+      </ion-item>
+
+      
+  </ion-list>
+</ion-content>
