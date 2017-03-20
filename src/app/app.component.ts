@@ -1,6 +1,6 @@
 import { TabsPage } from './../pages/tabs/tabs';
-import { Component } from '@angular/core';
-import { Platform, MenuController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { Platform, MenuController, Nav } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { HomePage } from '../pages/home/home';
@@ -14,6 +14,8 @@ import { ConnectionService } from './../providers/connection-service';
   providers: [ConnectionService],
 })
 export class MyApp {
+
+  @ViewChild(Nav) nav: Nav;
 
   pages: Array<{title: string , component: any}> = [];
   rootPage = LoginPage;
@@ -40,7 +42,8 @@ export class MyApp {
     if(page.title=='Sair'){
       this.connectionService.logOutUser();
     }
-    this.rootPage = page.component;
+    // this.rootPage = page.component;
+    this.nav.setRoot(page.component);
     this.menuController.close();
   }
 }
