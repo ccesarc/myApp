@@ -15,7 +15,11 @@ import { ConnectionService } from './../../providers/connection-service';
 })
 export class OverlayPage {
 
-  public people: any;
+  
+  public people_info: any;
+  public page: any = '1';
+
+  public items = [];
 
   constructor(
     public navCtrl: NavController, 
@@ -25,88 +29,45 @@ export class OverlayPage {
     public loadingCtrl: LoadingController,
     public modalCtrl: ModalController,
     public connectionService : ConnectionService
-    ) {}
+    ) {
+      console.log('ionViewDidLoad OverlayPage constructor');
+
+      let loading = this.loadingCtrl.create({
+      content: "Carregando...",
+      });
+      loading.present();
+
+      this.connectionService.getLoginUser2('1','3')
+        .then((resposta)=>{
+          let json = resposta.json();          
+          this.people_info = json.info;
+          this.page = 1 + this.people_info.page
+
+          for (let i = 0; i < json.results.length; i++) {
+            this.items.push( json.results[i] );
+          }  
+                  
+          loading.dismiss();
+        }).catch((erro)=>{
+          loading.dismiss();
+          this.showAlert('Erro','Erro ao buscar usuários');
+          console.log('Erro ao buscar o cep');
+        });
+
+    }
 
   ionViewDidLoad() {
-    //this.presentLoading();
     console.log('ionViewDidLoad OverlayPage');
-  }
+  } 
 
-  presentActionSheet() {
-    let actionSheet = this.actionSheetCtrl.create({
-      title: 'Modify your album',
-      buttons: [
-        {
-          text: 'Destructive',
-          role: 'destructive',
-          handler: () => {
-            console.log('Destructive clicked');
-          }
-        },{
-          text: 'Archive',
-          handler: () => {
-            console.log('Archive clicked');
-          }
-        },{
-          text: 'Cancel',
-          role: 'cancel',
-          handler: () => {
-            console.log('Cancel clicked');
-          }
-        }
-      ]
-    });
-    actionSheet.present();
-  }
-
-  // presentLoading() {
-  //   let loading = this.loadingCtrl.create({
-  //     content: "Carregando...",
-  //   });
-  //   loading.present();
-
-  //   setTimeout(() => {
-  //     loading.dismiss();
-  //   }, 1000);
-
-  // }
-
-  // presentModal() {
-  //   let modal = this.modalCtrl.create(ModalPage);
-  //   modal.present();
-  // }
-
-  openModal(characterNum) {
-
+  openModal(characterNum)
+  {
     let modal = this.modalCtrl.create(ModalPage, characterNum);
     modal.present();
-  }
-
-
-  buscaLoginUser2( email:string,senha:string ):void
-  {
-    let loading = this.loadingCtrl.create({
-      content: "Carregando...",
-    });
-    loading.present();
-
-    this.connectionService.getLoginUser2(email,senha)
-      .then((resposta)=>{
-        let json = resposta.json()
-        this.people = json.results;
-        //console.log(json);
-        loading.dismiss();
-      }).catch((erro)=>{
-        loading.dismiss();
-        this.showAlert('Erro','Erro ao buscar usuários');
-        console.log('Erro ao buscar o cep');
-      });
-  }
+  }  
 
   mostrarPessoa(pessoa:string):void
-  {
-    //console.log(pessoa);
-    //this.showAlert(pessoa,pessoa);
+  {    
     let modal = this.modalCtrl.create(ModalPage, pessoa);
     modal.present();
   }
@@ -118,6 +79,26 @@ export class OverlayPage {
       buttons: ['OK']
     });
     alert.present();
+  }  
+
+  doInfinite(infiniteScroll) {  
+
+    this.connectionService.getLoginUser2(this.page,'3')
+      .then((resposta)=>{
+        let json = resposta.json()        
+        this.people_info = json.info;
+        this.page = 1 + this.people_info.page         
+
+        for (let i = 0; i < json.results.length; i++) {
+          this.items.push( json.results[i] );
+        }
+
+        infiniteScroll.complete();        
+      }).catch((erro)=>{        
+        this.showAlert('Erro','Erro ao buscar usuários');
+        console.log('Erro ao buscar o cep');
+      });
+
   }
 
 }

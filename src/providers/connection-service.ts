@@ -26,8 +26,14 @@ export class ConnectionService {
     return this.http.get('http://viacep.com.br/ws/'+ email.trim() +'/json/').toPromise();
   }
 
-  getLoginUser2(email:string,senha:string) : Promise <Response> {
-    return this.http.get('https://randomuser.me/api/?results=10').toPromise();
+  getLoginUser2(page:string,results:string) : Promise <Response> {
+    if(page==''){
+      page = '1';
+    }
+    if(results==''){
+      results = '10';
+    }
+    return this.http.get('https://randomuser.me/api/?page='+page+'&results='+results).toPromise();
   }
 
   getUser(){
