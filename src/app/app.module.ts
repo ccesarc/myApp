@@ -17,7 +17,9 @@ import { LoginPage } from './../pages/login/login';
     TabsPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp,{
+      mode: 'md'
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [

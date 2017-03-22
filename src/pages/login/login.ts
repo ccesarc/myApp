@@ -89,7 +89,7 @@ export class LoginPage {
 
     }
 
-  ionViewDidLoad() {    
+  ionViewDidLoad2() {    
     this.menuCtrl.enable(false);    
     //this.menuCtrl.open();
 
@@ -125,5 +125,63 @@ export class LoginPage {
         console.log('Erro ao buscar o cep');
       });
   }
+
+  ionViewCanEnter() : boolean {
+    console.log('01');
+
+
+    this.menuCtrl.enable(false);    
+    //this.menuCtrl.open();
+
+    console.log('ionViewDidLoad LoginPage');
+    console.log(this.connectionService.getUser());
+
+    if(this.connectionService.getUser()==null){
+      console.log('Nullo aqui');
+    }else{
+      console.log('Logado');
+      this.navCtrl.setRoot(HomePage);
+      //this.navCtrl.push(HomePage);
+      
+    } 
+
+    return true;
+    
+  }
+
+  ionViewDidLoad() : void {
+    console.log('02');
+  }
+
+  ionViewWillEnter() : void {
+    console.log('03');
+  }
+
+  ionViewDidEnter() : void {
+    console.log('04');
+  }
+
+  ionViewCanLeave() : boolean {
+    console.log('5');
+    return true;
+  }
+
+  ionViewWillLeave() : void {
+    console.log('6');
+  } 
+
+  ionViewDidLeave() : void {
+    console.log('7');
+  }
+
+  ionViewWillUnload() : void {
+    console.log('8');
+  }
+
+  
+
+  
+
+  
 
 }
