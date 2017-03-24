@@ -1,21 +1,44 @@
-<ion-menu [content]='myContent' id='menuTopo'>
-        <ion-header>
-            <ion-navbar>
+<ion-menu [content]='myContent' id='menuTopo1' side='left'>
+    <ion-header>
+        <ion-toolbar>
             <ion-buttons start>
                 <button ion-button icon-only>
-                <ion-icon name="contact"></ion-icon>
+                    <ion-icon name="contact"></ion-icon>
                 </button>
             </ion-buttons>
-            <ion-title>My First List</ion-title>
-            </ion-navbar>
-        </ion-header>
-        <ion-content>
-            <ion-list>
-                <button ion-item *ngFor='let p of pages' (click)='openPage(p)' >
-                    {{ p.title }}
-                </button>                
-            </ion-list>
-        </ion-content>
+            <ion-title>Menu 1</ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content>
+        <ion-list>
+            <button ion-item *ngFor='let p of pages' (click)='openPage(p)' menuClose>
+                {{ p.title }}
+            </button>
+        </ion-list>
+    </ion-content>
 </ion-menu>
+
+<ion-menu [content]='myContent' id='menuTopo2' side='right'>
+    <ion-header>
+        <ion-toolbar>
+            <ion-buttons start>
+                <button ion-button icon-only>
+                    <ion-icon name="contact"></ion-icon>
+                </button>
+            </ion-buttons>
+            <ion-title>Menu 2</ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content>
+        <ion-list >
+            <ion-item>Item 1</ion-item>
+            <ion-item>Item 2</ion-item>
+            <ion-item>Item 3</ion-item>
+            <ion-item>Item 4</ion-item>
+            <ion-item>Item 5</ion-item>
+        </ion-list>
+    </ion-content>
+</ion-menu>
+
 
 <ion-nav #myContent [root]="rootPage"></ion-nav>

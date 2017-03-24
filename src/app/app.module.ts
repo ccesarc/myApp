@@ -1,3 +1,4 @@
+import { SobrePage } from './../pages/sobre/sobre';
 import { TabsPage } from './../pages/tabs/tabs';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
@@ -14,11 +15,24 @@ import { LoginPage } from './../pages/login/login';
     OverlayPage,
     ModalPage,
     LoginPage,
-    TabsPage
+    TabsPage,
+    SobrePage
   ],
   imports: [
     IonicModule.forRoot(MyApp,{
-      mode: 'md'
+      // mode: 'md',
+      // menuType: 'reveal',
+      platforms: {
+        ios: {
+           menuType: 'reveal',
+        },
+        android : {
+          menuType: 'overlay',
+        },
+        windows : {
+          menuType: 'push',
+        },
+      }
     })
   ],
   bootstrap: [IonicApp],
@@ -28,7 +42,8 @@ import { LoginPage } from './../pages/login/login';
     OverlayPage,
     ModalPage,
     LoginPage,
-    TabsPage
+    TabsPage,
+    SobrePage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })

@@ -1,3 +1,4 @@
+import { SobrePage } from './../pages/sobre/sobre';
 import { TabsPage } from './../pages/tabs/tabs';
 import { Component, ViewChild } from '@angular/core';
 import { Platform, MenuController, Nav } from 'ionic-angular';
@@ -26,6 +27,7 @@ export class MyApp {
       {title: 'Home', component: HomePage},
       {title: 'Overlay', component: OverlayPage},   
       {title: 'TabsPage', component: TabsPage},
+      {title: 'SobrePage', component: SobrePage},      
       {title: 'Sair', component: LoginPage},
     ];
 
@@ -41,9 +43,7 @@ export class MyApp {
     console.log('Aqui '+page.title);
     if(page.title=='Sair'){
       this.connectionService.logOutUser();
-    }
-    // this.rootPage = page.component;
-    this.nav.setRoot(page.component);
-    this.menuController.close();
+    }    
+    this.nav.setRoot(page.component);    
   }
 }

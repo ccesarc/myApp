@@ -1,10 +1,9 @@
 import { Component, trigger, state, style, transition, animate, keyframes } from '@angular/core';
 import { NavController, NavParams, LoadingController, AlertController, MenuController } from 'ionic-angular';
 
-import { Storage, SqlStorage } from 'ionic-framework/ionic';
+import { Storage } from 'ionic-framework/ionic';
 import { ConnectionService } from './../../providers/connection-service';
 import { HomePage } from './../home/home';
-import { OverlayPage } from './../overlay/overlay';
 
 /*
   Generated class for the Login page.
@@ -89,21 +88,21 @@ export class LoginPage {
 
     }
 
-  ionViewDidLoad2() {    
-    this.menuCtrl.enable(false);    
-    //this.menuCtrl.open();
+  // ionViewDidLoad2() {    
+  //   //this.menuCtrl.enable(false);    
+  //   //this.menuCtrl.open();
 
-    console.log('ionViewDidLoad LoginPage');
-    console.log(this.connectionService.getUser());
+  //   console.log('ionViewDidLoad LoginPage');
+  //   console.log(this.connectionService.getUser());
 
-    if(this.connectionService.getUser()==null){
-      console.log('Nullo aqui');
-    }else{
-      console.log('Logado');
-      this.navCtrl.setRoot(HomePage);
-      //this.navCtrl.push(HomePage);
-    }    
-  }  
+  //   if(this.connectionService.getUser()==null){
+  //     console.log('Nullo aqui');
+  //   }else{
+  //     console.log('Logado');
+  //     this.navCtrl.setRoot(HomePage);
+  //     //this.navCtrl.push(HomePage);
+  //   }    
+  // }  
 
   buscaLoginUser():void{
 
@@ -128,9 +127,10 @@ export class LoginPage {
 
   ionViewCanEnter() : boolean {
     console.log('01');
-
-
-    this.menuCtrl.enable(false);    
+    
+    this.menuCtrl.enable(false, 'menuTopo1');
+    this.menuCtrl.enable(false, 'menuTopo2');
+    //this.menuCtrl.enable(false);    
     //this.menuCtrl.open();
 
     console.log('ionViewDidLoad LoginPage');
@@ -145,7 +145,7 @@ export class LoginPage {
       
     } 
 
-    return true;
+    return true; 
     
   }
 

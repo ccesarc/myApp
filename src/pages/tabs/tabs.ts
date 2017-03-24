@@ -1,3 +1,4 @@
+import { SobrePage } from './../sobre/sobre';
 import { OverlayPage } from './../overlay/overlay';
 import { HomePage } from './../home/home';
 import { Component } from '@angular/core';
@@ -17,6 +18,7 @@ export class TabsPage {
 
   tab1Root: any = HomePage;
   tab2Root: any = OverlayPage;
+  tab3Root: any = SobrePage;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 

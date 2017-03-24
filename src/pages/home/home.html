@@ -1,24 +1,15 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle>
+    <button ion-button menuToggle start>
       <ion-icon name='menu' ></ion-icon>
     </button>
-    <ion-title>
-      Home
-    </ion-title>
-
-  <ion-buttons right>
-    <button ion-button menuToggle="right">
+    <ion-title>Pagina Home</ion-title>
+    <button ion-button menuToggle='right' end>
       <ion-icon name='menu' ></ion-icon>
     </button>
-  </ion-buttons>
-
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster. Caio
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <button ion-button block (click)='onSobre()'>Sobre pagina</button>
 </ion-content>
