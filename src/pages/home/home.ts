@@ -1,7 +1,6 @@
-import { Push, PushObject, PushOptions } from '@ionic-native/push';
 import { SobrePage } from './../sobre/sobre';
 import { Component } from '@angular/core';
-import { NavController, MenuController } from 'ionic-angular';
+import { NavController, MenuController, AlertController } from 'ionic-angular';
 import { ConnectionService } from './../../providers/connection-service';
 
 @Component({
@@ -9,38 +8,27 @@ import { ConnectionService } from './../../providers/connection-service';
   templateUrl: 'home.html'
 })
 export class HomePage {
+  
+  
 
   constructor(    
     public navCtrl: NavController, 
     public connectionService:ConnectionService,
-    private menuCtrl: MenuController,
-    private push: Push
+    private menuCtrl: MenuController,  
+    public alertCtrl: AlertController,
     ) {
      console.log('ionViewDidLoadHomeconstructor');
-     //console.log(this.connectionService.getUser());     
+     //console.log(this.connectionService.getUser());
+  }
 
-      const options: PushOptions = {
-          android: {
-              senderID: '495060840000 '
-          },
-          ios: {
-              alert: 'true',
-              badge: true,
-              sound: 'false'
-          },
-          windows: {}
-        };
+  getCoordenadas(){
+    console.log('getCoordenadasHome')
+    this.connectionService.getCoordenadas();
+  }
 
-        const pushObject: PushObject = this.push.init(options);
-
-        pushObject.on('notification').subscribe(notification => console.log('Received a notification', notification));
-
-        pushObject.on('registration').subscribe(registration => console.log('Device registered', registration));
-
-        pushObject.on('error').subscribe(error => console.error('Error with Push plugin', error));
-
-
-     
+  getPushNotification(){
+    console.log('getPushNotification')
+    this.connectionService.getPushNotification();
   }
 
   ionViewDidLoad() {
@@ -58,9 +46,41 @@ export class HomePage {
   }
 
   onSobre() : void {
-
+    console.log('ionViewDidLoadonSobre');
     this.navCtrl.push(SobrePage);
 
   }
+
+  
+
+  onTirarFoto() : void {
+    this.connectionService.onTirarFoto();
+  }
+
+  codigoDeBarras : String;
+
+  onBarcodeScanner() : void {
+   //this.connectionService.onBarcodeScanner();
+
+    console.log(this.connectionService.onBarcodeScanner());
+
+    //this.codigoDeBarras = onBarcodeScanner.text;
+
+    //this.showAlert('onBarcodeScanner ok ', " onBarcodeScanner ok format 1: "+ onBarcodeScanner.format);
+    //this.showAlert('onBarcodeScanner ok ', " onBarcodeScanner ok format 2: "+ onBarcodeScanner.text);
+
+    this.navCtrl.push(SobrePage, {itemid: 'onBarcodeScanner'});
+
+  }
+
+  showAlert(title:string,subTitle:string) {
+    let alert = this.alertCtrl.create({
+      title: title,
+      subTitle: subTitle,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+  
 
 }

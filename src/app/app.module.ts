@@ -8,6 +8,8 @@ import { OverlayPage } from './../pages/overlay/overlay';
 import { ModalPage } from './../pages/modal/modal';
 import { LoginPage } from './../pages/login/login';
 
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -45,6 +47,6 @@ import { LoginPage } from './../pages/login/login';
     TabsPage,
     SobrePage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [BarcodeScanner,{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
 export class AppModule {}

@@ -10,6 +10,21 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding class="home">
+ 
   <button ion-button block (click)='onSobre()'>Sobre pagina</button>
+  <button ion-button block (click)='getCoordenadas()'>getCoordenadas</button>
+  <button ion-button block (click)='getPushNotification()'>getPushNotification</button>
+  <button ion-button block (click)='onTirarFoto()'>onTirarFoto</button>
+  <button ion-button block (click)='onBarcodeScanner()'>onBarcodeScanner</button>
+  
+  <p>Código de barras {{codigoDeBarras}}</p>
+
+  <ion-card>
+    <ion-card-content>
+      Latest Picture:
+      <img [src]="base64Image" *ngIf="base64Image" />
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>

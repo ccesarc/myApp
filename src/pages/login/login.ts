@@ -1,7 +1,6 @@
 import { Component, trigger, state, style, transition, animate, keyframes } from '@angular/core';
 import { NavController, NavParams, LoadingController, AlertController, MenuController } from 'ionic-angular';
 
-import { Storage } from 'ionic-framework/ionic';
 import { ConnectionService } from './../../providers/connection-service';
 import { HomePage } from './../home/home';
 

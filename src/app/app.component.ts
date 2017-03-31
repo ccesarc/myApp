@@ -1,3 +1,5 @@
+import { Push } from '@ionic-native/push';
+import { Geolocation } from '@ionic-native/geolocation';
 import { SobrePage } from './../pages/sobre/sobre';
 import { TabsPage } from './../pages/tabs/tabs';
 import { Component, ViewChild } from '@angular/core';
@@ -12,7 +14,7 @@ import { ConnectionService } from './../providers/connection-service';
 
 @Component({
   templateUrl: 'app.html',
-  providers: [ConnectionService],
+  providers: [ConnectionService,Geolocation,Push],
 })
 export class MyApp {
 

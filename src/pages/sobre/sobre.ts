@@ -13,7 +13,15 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class SobrePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  public itemid;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+    //this.itemid = navParams.data.itemid;
+
+    this.itemid = navParams.get('itemid');
+
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SobrePage');
